@@ -1,0 +1,123 @@
+/* Container */
+.join_container {
+  display: flex;
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Left Section */
+.join_left {
+  flex: 1;
+  background-color: #181c14; /* Teal color */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  text-align: center;
+}
+
+.join_left h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.join_button {
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: #181c14;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.join_button:hover {
+  background-color: #f0f0f0;
+}
+
+/* Right Section */
+.join_right {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.join_right h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.join_form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  gap: 15px;
+}
+
+.join_form input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.join_submit {
+  padding: 10px;
+  background-color: #181c14;
+  color: #f5f5f5;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.form_text {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #181c14;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+}
+.form_text span {
+  color: #181c14;
+  font-weight: bold;
+  border-bottom: 3px solid #181c14;
+  cursor: pointer;
+}
+.join_link {
+  text-decoration: none;
+  color: var(--clr-white);
+}
+.password_container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password_container input {
+  flex: 1;
+  padding-right: 40px; /* Ensure space for the icon */
+}
+
+.toggle_password {
+  background: none;
+  border: none;
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #555; /* Adjust icon color */
+}
+.login_result {
+  margin-top: 10px;
+  font-size: 1rem;
+  text-align: center;
+  color: red; /* Error messages in red */
+}
