@@ -1,0 +1,83 @@
+.side_menu {
+  width: 25%;
+  height: 100vh;
+  border-right: 1px solid var(--clr-grey);
+  background-color: var(--clr-platinum);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  left: 0;
+  top: 0;
+}
+
+.new_chat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.new_chat button {
+  padding: 0.6rem 4rem;
+  margin: 2rem 0 0;
+  border: 1px solid var(--clr-night);
+  border-radius: 0.8rem;
+  background-color: var(--clr-black);
+}
+
+.new_chat button a {
+  color: var(--clr-white);
+  font-family: var(--font-title);
+}
+.chat_history_title {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+.chat_history_title h2 {
+  font-family: var(--font-text);
+  font-size: 1.4em;
+  color: var(--clr-night);
+}
+.chat_history_title h2 span {
+  border-bottom: 3px solid var(--clr-night);
+}
+.chat_history_list {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 0 1rem;
+}
+.chat_history_list ul {
+  list-style: none;
+}
+.chat_history_list ul li {
+  padding: 0 0 0.8rem 1rem;
+  color: var(--clr-night);
+  justify-content: left;
+  display: flex;
+  font-weight: 400;
+  font-family: var(--font-text);
+  cursor: pointer;
+  transition: padding 0.3s ease, color 0.3s ease; /* Adds smooth transition */
+}
+.chat_history_list ul li:hover {
+  padding: 0 0 0.8rem 1.4rem;
+  font-weight: 600;
+}
+.bottom_links {
+  display: flex;
+  justify-content: center; /* Center icons horizontally */
+  gap: 2rem;
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+  border-top: 1px solid var(--clr-grey);
+  position: sticky;
+  bottom: 0;
+  background-color: var(--clr-platinum); /* Ensures a background behind icons */
+}
+.icon {
+  font-size: 1.5rem;
+  color: var(--clr-black);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
