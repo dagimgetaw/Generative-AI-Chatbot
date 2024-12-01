@@ -1,3 +1,42 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sacramento&display=swap");
+:root {
+  --font-logo: "Sacramento", cursive;
+  --font-title: "Josefin Sans", sans-serif;
+  --font-text: "Poppins", sans-serif;
+}
+
+.light_theme {
+  --clr-black: #222222;
+  --clr-night: #181c14;
+  --clr-grey: #dddddd;
+  --clr-platinum: #f5f5f5;
+  --clr-white: #ffffff;
+}
+
+.dark_theme {
+  --clr-black: #f5f5f5;
+  --clr-night: #ffffff;
+  --clr-grey: #494545;
+  --clr-platinum: #181c14;
+  --clr-white: #222222;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* scrollbar-width: auto;
+  scrollbar-color: initial; */
+}
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+button {
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+}
