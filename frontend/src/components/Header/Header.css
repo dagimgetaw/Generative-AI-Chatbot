@@ -1,21 +1,35 @@
-.header {
+/* Header Styling */
+.full_width {
   height: 10vh;
-  /* border-bottom: 1px solid var(--clr-grey); */
   background-color: var(--clr-white);
   position: fixed;
   top: 0;
   left: 25%;
-  width: 75%;
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--clr-white);
+  width: 75%; /* Use 100% width here to span across the available space */
 }
+
+.half_width {
+  height: 10vh;
+  background-color: var(--clr-white);
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-white);
+  width: 100%; /* You can adjust this as needed */
+}
+
 .header_title {
   flex: 1;
   color: var(--clr-black);
-  font-family: var(--font-logo);
+  font-family: var(--font-text);
   font-weight: bold;
   text-align: left;
   padding-left: 3rem;
@@ -28,29 +42,30 @@
   align-items: center;
   gap: 10px;
 }
+
 .header_links .icon {
   font-size: 1.4em;
   cursor: pointer;
-  object-fit: contain;
-  height: 100%;
   margin-right: 0.5rem;
   color: var(--clr-black);
 }
 
-/* .header_links img {
-  border-radius: 50%;
-  margin-right: 2rem;
-  object-fit: contain;
-  height: 100%;
-} */
 .header_links .join {
   margin-right: 2rem;
   padding: 0.4rem 1rem;
   border: 1px solid var(--clr-night);
   border-radius: 0.8rem;
   background-color: var(--clr-black);
-}
-.header_links .join a {
   color: var(--clr-white);
   font-family: var(--font-title);
+}
+
+.username_display {
+  margin-right: 10px;
+  font-family: var(--font-text);
+  color: var(--clr-night);
+}
+
+.username_display span {
+  font-weight: bold;
 }
