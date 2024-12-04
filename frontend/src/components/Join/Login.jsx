@@ -5,13 +5,19 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useAuth } from "../../AuthContext";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from "@clerk/clerk-react";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loginResult, setLoginResult] = useState("");
-  const { login } = useAuth();
+  const { login } = useAuth(); // Access the login function
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -22,7 +28,7 @@ const Login = () => {
         console.log(result.data);
         if (result.data === "success") {
           setLoginResult("");
-          login(); // Update global state
+          login(username); // Pass username to login function
           navigate("/"); // Redirect on success
         } else {
           setLoginResult(result.data); // Show message on failure
@@ -68,6 +74,14 @@ const Login = () => {
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
+          </div>
+          <div className="google_login">
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
           </div>
           <button type="submit" className="join_submit">
             Login

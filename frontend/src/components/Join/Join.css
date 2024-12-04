@@ -1,23 +1,33 @@
-/* Container */
 .join_container {
   display: flex;
   height: 100vh;
   font-family: "Poppins", sans-serif;
+  flex-wrap: wrap;
 }
 
-/* Left Section */
-.join_left {
-  flex: 1;
-  background-color: #181c14; /* Teal color */
+.join_left,
+.join_right {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #ffffff;
-  text-align: center;
+  padding: 20px;
 }
 
-.join_left h2 {
+.join_left {
+  background-color: #181c14;
+  color: #ffffff;
+  text-align: center;
+  flex: 1 1 45%;
+}
+
+.join_right {
+  background-color: #f5f5f5;
+  flex: 1 1 55%;
+}
+
+.join_left h2,
+.join_right h2 {
   font-size: 2rem;
   margin-bottom: 20px;
 }
@@ -35,22 +45,6 @@
 
 .join_button:hover {
   background-color: #f0f0f0;
-}
-
-/* Right Section */
-.join_right {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  background-color: #f5f5f5;
-}
-
-.join_right h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
 }
 
 .join_form {
@@ -78,23 +72,26 @@
   font-size: 1rem;
   font-weight: bold;
 }
+
 .form_text {
   margin-top: 1rem;
   font-size: 0.9rem;
   color: #181c14;
-  font-family: "Poppins", sans-serif;
   text-align: center;
 }
+
 .form_text span {
   color: #181c14;
   font-weight: bold;
   border-bottom: 3px solid #181c14;
   cursor: pointer;
 }
+
 .join_link {
   text-decoration: none;
   color: var(--clr-white);
 }
+
 .password_container {
   position: relative;
   display: flex;
@@ -103,7 +100,7 @@
 
 .password_container input {
   flex: 1;
-  padding-right: 40px; /* Ensure space for the icon */
+  padding-right: 40px;
 }
 
 .toggle_password {
@@ -113,11 +110,78 @@
   right: 10px;
   cursor: pointer;
   font-size: 1rem;
-  color: #555; /* Adjust icon color */
+  color: #555;
 }
+
 .login_result {
   margin-top: 10px;
   font-size: 1rem;
   text-align: center;
-  color: red; /* Error messages in red */
+  color: red;
+}
+
+.google_login button {
+  padding: 10px;
+  width: 100%;
+  background-color: transparent;
+  color: #181c14;
+  border: 2px solid #181c14;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+@media (max-width: 900px) {
+  .join_left {
+    width: 40%;
+  }
+  .join_right {
+    width: 60%;
+  }
+
+  .join_left h2,
+  .join_right h2 {
+    font-size: 1.8rem;
+  }
+
+  .join_form input {
+    font-size: 0.9rem;
+  }
+
+  .join_button,
+  .join_submit {
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 700px) {
+  .join_container {
+    flex-direction: column;
+  }
+  .join_left {
+    width: 100%;
+    height: 30vh;
+  }
+  .join_right {
+    width: 100%;
+    height: 70vh;
+  }
+
+  .join_left h2,
+  .join_right h2 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .join_container {
+    flex-direction: column;
+  }
+  .join_left {
+    height: 10vh;
+  }
+  .join_right {
+    height: 90vh;
+  }
 }

@@ -3,6 +3,12 @@ import "./Join.css";
 import { useState } from "react";
 import axios from "axios";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from "@clerk/clerk-react";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -66,6 +72,14 @@ const Signup = () => {
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
+          </div>
+          <div className="google_login">
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
           </div>
           <button type="submit" className="join_submit">
             Sign Up
