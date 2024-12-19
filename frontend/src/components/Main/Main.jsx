@@ -15,14 +15,12 @@ const Main = () => {
           sidebarVisible={sidebarVisible}
           setSidebarVisible={setSidebarVisible}
         />
-        {/* <div className={sidebarVisible ? "main_full" : "main_half"}> */}
         <Header
           color={color}
           setColor={setColor}
           sidebarVisible={sidebarVisible}
         />
         <Body color={color} sidebarVisible={sidebarVisible} />
-        {/* </div> */}
       </div>
     </div>
   );
