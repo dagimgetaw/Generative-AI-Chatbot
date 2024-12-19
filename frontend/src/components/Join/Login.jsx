@@ -5,40 +5,36 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useAuth } from "../../AuthContext";
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-} from "@clerk/clerk-react";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loginResult, setLoginResult] = useState("");
-  const { login } = useAuth(); // Access the login function
+  const { login } = useAuth(); // Access the login function from context
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3001/login", { username, password })
+      .post("http://localhost:3001/login", { username, password }) // POST request to backend
       .then((result) => {
-        console.log(result.data);
         if (result.data === "success") {
-          setLoginResult("");
-          login(username); // Pass username to login function
+          setLoginResult(""); // Clear any previous error
+          login(username); // Pass username to AuthContext after successful login
           navigate("/"); // Redirect on success
         } else {
           setLoginResult(result.data); // Show message on failure
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setLoginResult("Login failed. Please try again.");
+      });
   };
 
   const toggleShowPass = () => {
-    setShowPassword((prevState) => !prevState);
+    setShowPassword((prevState) => !prevState); // Toggle password visibility
   };
 
   return (
@@ -58,14 +54,14 @@ const Login = () => {
             type="text"
             placeholder="Username"
             required
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)} // Capture username input
           />
           <div className="password_container">
             <input
               type={showPassword ? "text" : "password"}
               placeholder="Password"
               required
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)} // Capture password input
             />
             <button
               type="button"
@@ -74,14 +70,6 @@ const Login = () => {
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
-          </div>
-          <div className="google_login">
-            <SignedOut>
-              <SignInButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
           </div>
           <button type="submit" className="join_submit">
             Login
