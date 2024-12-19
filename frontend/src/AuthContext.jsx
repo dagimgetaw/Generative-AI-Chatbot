@@ -1,32 +1,54 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
+import { useClerk, useUser } from "@clerk/clerk-react"; // useClerk and useUser are useful for accessing Clerk's auth state
 
-// Create a context for authentication
 const AuthContext = createContext();
 
-// Custom hook to use the AuthContext
 export const useAuth = () => {
   return useContext(AuthContext);
 };
 
-// AuthProvider component to provide authentication data
+// eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [username, setUsername] = useState(""); // Store the username
+  const { signOut } = useClerk();
+  const { isSignedIn, user } = useUser(); // Use Clerk's hook to get the signed-in state and user info
+  const [username, setUsername] = useState(""); // Store the username in context
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication state
+  const [showSignupPopup, setShowSignupPopup] = useState(false); // Popup visibility
 
-  // Login function to set user as authenticated and store username
+  useEffect(() => {
+    if (isSignedIn) {
+      setUsername(user?.firstName || "User"); // Set the username from Clerk's user data
+      setIsAuthenticated(true); // Update authentication status
+    } else {
+      setUsername(""); // Reset username when logged out
+      setIsAuthenticated(false);
+    }
+  }, [isSignedIn, user]);
+
   const login = (username) => {
-    setIsAuthenticated(true);
-    setUsername(username);
+    setUsername(username); // Set username from manual login (MongoDB or Clerk)
+    setIsAuthenticated(true); // Mark user as authenticated
+    setShowSignupPopup(false);
   };
 
-  // Logout function to clear authentication data
   const logout = () => {
-    setIsAuthenticated(false);
-    setUsername("");
+    setUsername(""); // Reset username
+    setIsAuthenticated(false); // Set authentication to false
+    setShowSignupPopup(false); // Hide popup when logged out
+    signOut(); // Clerk logout
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, username, login, logout }}>
+    <AuthContext.Provider
+      value={{
+        isAuthenticated, // Use Clerk's isSignedIn for actual status
+        username, // Use username set after login
+        login,
+        logout,
+        showSignupPopup,
+        setShowSignupPopup,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
