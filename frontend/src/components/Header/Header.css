@@ -1,6 +1,6 @@
 /* Header Styling */
 .full_width {
-  height: 10vh;
+  padding: 1rem 0;
   background-color: var(--clr-white);
   position: fixed;
   top: 0;
@@ -14,7 +14,7 @@
 }
 
 .half_width {
-  height: 10vh;
+  padding: 1rem 0;
   background-color: var(--clr-white);
   position: fixed;
   top: 0;
@@ -59,7 +59,15 @@
   color: var(--clr-white);
   font-family: var(--font-title);
 }
-
+.oauth {
+  margin-right: 0rem;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--clr-night);
+  border-radius: 0.8rem;
+  background-color: var(--clr-black);
+  color: var(--clr-white);
+  font-family: var(--font-title);
+}
 .username_display {
   margin-right: 10px;
   font-family: var(--font-text);
