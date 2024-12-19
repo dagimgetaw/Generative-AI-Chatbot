@@ -12,6 +12,7 @@ import { Context } from "../../context/Context";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../AuthContext";
 
+// eslint-disable-next-line react/prop-types
 const Side = ({ color, sidebarVisible, setSidebarVisible }) => {
   const { clearChats, chats } = useContext(Context);
   const { isAuthenticated } = useAuth();
