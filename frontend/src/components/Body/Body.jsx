@@ -1,15 +1,15 @@
+import { useContext, useEffect, useRef } from "react";
+import { useAuth } from "../../AuthContext.jsx";
+import { Context } from "../../context/Context.jsx";
 import send from "../../assets/send.svg";
 import user from "../../assets/user-icon.png";
 import gpt from "../../assets/chatgptLogo.svg";
-import "./Body.css";
-import { useContext, useEffect, useRef, useState } from "react";
-import { useAuth } from "../../AuthContext.jsx";
 import { FaTimes } from "react-icons/fa";
-import { Context } from "../../context/Context.jsx";
+import "./Body.css";
 
+// eslint-disable-next-line react/prop-types
 const Body = ({ sidebarVisible }) => {
-  const { isAuthenticated } = useAuth(); // Access authentication state
-  const [showSignupPopup, setShowSignupPopup] = useState(false);
+  const { isAuthenticated, showSignupPopup, setShowSignupPopup } = useAuth(); // Use auth context here
   const { chats, onSent, showResult, loading, input, setInput } =
     useContext(Context);
   const msgEnd = useRef(null);
@@ -22,7 +22,7 @@ const Body = ({ sidebarVisible }) => {
 
   const handleSubmit = async () => {
     if (!isAuthenticated) {
-      setShowSignupPopup(true); // Show signup popup if the user is not authenticated
+      setShowSignupPopup(true); // Show the popup if the user is not authenticated
       return;
     }
     onSent(input); // Send the input if the user is authenticated
@@ -41,16 +41,16 @@ const Body = ({ sidebarVisible }) => {
 
       {isAuthenticated ? (
         !showResult && (
-          <>
+          <div className="chat_help">
             <img src={gpt} alt="chat gpt logo" className="chatgpt_img" />
             <h2 className="help_title">What can I help with?</h2>
-          </>
+          </div>
         )
       ) : (
-        <>
+        <div className="chat_help">
           <img src={gpt} alt="chat gpt logo" className="chatgpt_img" />
           <h2 className="help_title">What can I help with?</h2>
-        </>
+        </div>
       )}
 
       {showResult && (
@@ -58,7 +58,7 @@ const Body = ({ sidebarVisible }) => {
           {chats.map((chat, index) => (
             <div
               key={index}
-              id={`chat-${chat.id}`} // Ensure each chat has a unique ID
+              id={`chat-${chat.id}`}
               className={`chat ${chat.type === "ai" ? "chatgpt_answer" : ""}`}
             >
               <img
@@ -89,11 +89,11 @@ const Body = ({ sidebarVisible }) => {
           <input
             type="text"
             placeholder="Send message"
-            onChange={(e) => setInput(e.target.value)} // Update input
+            onChange={(e) => setInput(e.target.value)}
             value={input}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
-                handleSubmit(); // Trigger handleSubmit when Enter is pressed
+                handleSubmit();
               }
             }}
           />

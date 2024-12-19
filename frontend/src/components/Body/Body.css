@@ -11,11 +11,10 @@
   justify-content: center; /* Centers content vertically */
   align-items: center; /* Centers content horizontally */
   scroll-behavior: smooth;
-  margin-top: 33rem;
+  margin-top: 0rem;
   padding-top: 5rem;
   height: 100vh;
 }
-
 /* Webkit Scrollbar Styles (Chrome, Edge, Safari) */
 .body::-webkit-scrollbar {
   width: 8px;
@@ -42,12 +41,11 @@
   font-weight: bold;
   margin: 0;
   font-family: var(--font-text);
+  padding: 1rem 0 5rem;
 }
 
 .chatgpt_img {
   border-radius: 0.5rem;
-  position: relative;
-  bottom: 2rem;
 }
 
 .chats {
@@ -64,10 +62,13 @@
   padding: 2rem 3rem 1rem;
   font-size: 1.2rem;
   display: flex;
-  align-items: flex-start;
   text-align: justify;
+  align-items: center;
 }
-
+.chat_help {
+  display: block;
+  text-align: center;
+}
 .chatimg {
   object-fit: cover;
   width: 2.5rem;
@@ -173,6 +174,7 @@
   right: 10px;
   font-size: 20px;
   color: var(--clr-black);
+  cursor: pointer;
 }
 
 /* Dark overlay when popup is displayed */
