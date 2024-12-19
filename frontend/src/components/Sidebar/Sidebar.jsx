@@ -4,7 +4,7 @@ import {
   FaEnvelope,
   FaChevronRight,
   FaTimes,
-  FaBars, // Hamburger icon for toggling
+  FaBars,
 } from "react-icons/fa";
 import "./Sidebar.css";
 import { useState, useContext } from "react";
